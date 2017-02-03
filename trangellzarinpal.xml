@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="3.0" group="gurupayment" method="upgrade">
+	<name>trangellzarinpal</name>
+	<title>TrangellZarinpal</title>
+	<author>Trangell</author>
+	<creationDate>Feb 2016</creationDate>
+	<copyright>Copyright 2016 Trangell Team</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>info@trangell.com</authorEmail>
+	<authorUrl>http://trangell.com</authorUrl>
+	<version>0.0.1</version>
+	<description>پلاگین پرداخت زرین پال برای افزونه گورو</description>
+	<config>
+		<fields name="params"  addfieldpath="/plugins/gurupayment/fields">
+			<fieldset name="basic">
+				<field name="merchant_id" type="text" size="40" label="شناسه مرچند" description="شانسه مرچند خود را وارد کنید" default=""></field>
+			</fieldset>
+		</fields>
+	</config>
+	<files>
+		<filename plugin="trangellzarinpal">trangellzarinpal.php</filename>
+		<filename>trangell_inputcheck.php</filename>
+	</files>
+</extension>
