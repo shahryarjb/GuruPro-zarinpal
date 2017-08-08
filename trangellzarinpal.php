@@ -10,7 +10,7 @@
 
 defined( '_JEXEC' ) or die( 'Restricted access' );
 if (!class_exists ('checkHack')) {
-	require_once( JPATH_PLUGINS . '/k2store/payment_trangellzarinpal/trangell_inputcheck.php');
+	require_once( JPATH_PLUGINS . '/gurupayment/trangellzarinpal/trangell_inputcheck.php');
 }
 
 jimport('joomla.application.menu');
