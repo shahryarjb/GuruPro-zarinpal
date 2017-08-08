@@ -10,23 +10,23 @@
 
 defined( '_JEXEC' ) or die( 'Restricted access' );
 if (!class_exists ('checkHack')) {
-	require_once( JPATH_PLUGINS . '/gurupayment/trangellzarinpal/trangell_inputcheck.php');
+	require_once( JPATH_PLUGINS . '/gurupayment/zarinpal/trangell_inputcheck.php');
 }
 
 jimport('joomla.application.menu');
 jimport( 'joomla.html.parameter' );
 
-class plgGurupaymentTrangellZarinpal extends JPlugin{
+class plgGurupaymentZarinpal extends JPlugin{
 
 	var $_db = null;
     
-	function plgGurupaymentTrangellZarinpal(&$subject, $config){
+	function plgGurupaymentZarinpal(&$subject, $config){
 		$this->_db = JFactory :: getDBO();
 		parent :: __construct($subject, $config);
 	}
 	
 	function onReceivePayment(&$post){
-		if($post['processor'] != 'trangellzarinpal'){
+		if($post['processor'] != 'zarinpal'){
 			return 0;
 		}	
 		
@@ -120,7 +120,7 @@ class plgGurupaymentTrangellZarinpal extends JPlugin{
 	}
 
 	function onSendPayment(&$post){
-		if($post['processor'] != 'trangellzarinpal'){
+		if($post['processor'] != 'zarinpal'){
 			return false;
 		}
 

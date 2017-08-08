@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="plugin" version="3.0" group="gurupayment" method="upgrade">
-	<name>trangellzarinpal</name>
-	<title>TrangellZarinpal</title>
+	<name>zarinpal</name>
+	<title>zarinpal</title>
 	<author>Trangell</author>
 	<creationDate>Feb 2016</creationDate>
 	<copyright>Copyright 2016 Trangell Team</copyright>
@@ -18,7 +18,7 @@
 		</fields>
 	</config>
 	<files>
-		<filename plugin="trangellzarinpal">trangellzarinpal.php</filename>
+		<filename plugin="zarinpal">zarinpal.php</filename>
 		<filename>trangell_inputcheck.php</filename>
 	</files>
 </extension>
