@@ -3,8 +3,8 @@
 	<name>zarinpal</name>
 	<title>zarinpal</title>
 	<author>Trangell</author>
-	<creationDate>Feb 2016</creationDate>
-	<copyright>Copyright 2016 Trangell Team</copyright>
+	<creationDate>Aug 2017</creationDate>
+	<copyright>Copyright 2017 Trangell Team</copyright>
 	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
 	<authorEmail>info@trangell.com</authorEmail>
 	<authorUrl>http://trangell.com</authorUrl>
@@ -14,6 +14,10 @@
 		<fields name="params"  addfieldpath="/plugins/gurupayment/fields">
 			<fieldset name="basic">
 				<field name="merchant_id" type="text" size="40" label="شناسه مرچند" description="شانسه مرچند خود را وارد کنید" default=""></field>
+				<field name="zaringate" type="list" default="0" label="درگاه زرین گیت" description="">
+					<option value="0">غیر فعال</option>
+					<option value="1">فعال</option>
+				</field>
 			</fieldset>
 		</fields>
 	</config>

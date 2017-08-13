@@ -4,7 +4,7 @@
  * @subpackage  com_Guru
  * @subpackage 	trangell_Zarinpal
  * @copyright   trangell team => https://trangell.com
- * @copyright   Copyright (C) 20016 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2017 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -76,7 +76,12 @@ class plgGurupaymentZarinpal extends JPlugin{
 		if (checkHack::checkString($status)){
 			if ($status == 'OK') {
 				try {
-				     $client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); 
+					if (intval($params->get('zaringate')) == 0){
+						$client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); 
+					}
+					else {
+						$client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl/ZarinGate‬‬', ['encoding' => 'UTF-8']); 
+					}
 					//$client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); // for local
 
 					$result = $client->PaymentVerification(
@@ -144,7 +149,7 @@ class plgGurupaymentZarinpal extends JPlugin{
 		$CallbackURL = JURI::root().'index.php?option=com_guru&controller=guruBuy&processor='.$param['processor'].'&task='.$param['task'].'&sid='.$param['sid'].'&order_id='.$post['order_id'].'&customer_id='.intval($post['customer_id']).'&pay=wait';
 		
 		try {
-			  $client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); 	
+			$client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); 	
 			//$client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']); // for local
 
 			$result = $client->PaymentRequest(
@@ -160,8 +165,13 @@ class plgGurupaymentZarinpal extends JPlugin{
 			
 			$resultStatus = abs($result->Status); 
 			if ($resultStatus == 100) {
-			//	Header('Location: https://www.zarinpal.com/pg/StartPay/'.$result->Authority); 
-				$app->redirect('https://www.zarinpal.com/pg/StartPay/'.$result->Authority);  // for local/
+				if (intval($params->get('zaringate')) == 0){
+					Header('Location: https://www.zarinpal.com/pg/StartPay/'.$result->Authority); 
+				}
+				else {
+					Header('Location: https://www.zarinpal.com/pg/StartPay/'.$result->Authority.'‪/ZarinGate‬‬'); 
+				}
+				//$app->redirect('https://www.zarinpal.com/pg/StartPay/'.$result->Authority);  // for local/
 			} else {
 				$msg= $this->getGateMsg('error');
 				$app->redirect($cancel_return, '<h2>'.$msg.$resultStatus .'</h2>', $msgType='Error'); 
